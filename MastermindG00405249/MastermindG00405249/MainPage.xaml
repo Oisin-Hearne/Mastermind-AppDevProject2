@@ -3,22 +3,57 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MastermindG00405249.MainPage">
 
-    <StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+    
+    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+        <Label Text="MASTERMIND" TextDecorations="Underline" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"
+               HorizontalTextAlignment="Center"/>
+        <Frame HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="910" WidthRequest="610" 
+               BackgroundColor="#6b3520" CornerRadius="20" BorderColor="black" HasShadow="True">
+
+            <Grid HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="900" WidthRequest="600" BackgroundColor="#6b3520"
+              x:Name="MainGrid">
+                <Grid.RowDefinitions>
+                    <!-- 14 -->
+                    <RowDefinition Height="0.1*"/>
+                    <!--Border-->
+                    <RowDefinition Height="1.2*"/>
+                    <!--Hidden-->
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.4*"/>
+                    <!--Border-->
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <!-- 8 -->
+                    <ColumnDefinition Width="0.1*"/>
+                    <!--Border-->
+                    <ColumnDefinition Width="*"/>
+                    <!--Correct Guesses -->
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                    <!--Border-->
+                </Grid.ColumnDefinitions>
+
+                <StackLayout x:Name="AnswerCover" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="4"
+                             HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="#411C15"
+                             HeightRequest="500" WidthRequest="500"></StackLayout>
+               
+            </Grid>
         </Frame>
-        <Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10"/>
-        <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
-        <Label FontSize="16" Padding="30,24,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Learn more at "/>
-                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
+
     </StackLayout>
 
 </ContentPage>
