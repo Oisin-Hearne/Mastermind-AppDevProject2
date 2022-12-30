@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MastermindG00405249.MainPage">
 
-    
+
     <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-        <Label Text="MASTERMIND" TextDecorations="Underline" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"
+        <Label Margin="10, 30, 10, 5" x:Name="LblTitle" Text="MASTERMIND" TextDecorations="Underline" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"
                HorizontalTextAlignment="Center"/>
         <Frame HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="910" WidthRequest="610" 
                BackgroundColor="#6b3520" CornerRadius="20" BorderColor="black" HasShadow="True">
@@ -33,27 +33,33 @@
                     <!--Border-->
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <!-- 8 -->
-                    <ColumnDefinition Width="0.1*"/>
                     <!--Border-->
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0.1*"/>
                     <!--Correct Guesses -->
-                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0.01*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="0.2*"/>
                     <!--Border-->
                 </Grid.ColumnDefinitions>
 
-                <StackLayout x:Name="AnswerCover" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="4"
+                <Frame x:Name="AnswerCover" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="4"
                              HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="#411C15"
-                             HeightRequest="500" WidthRequest="500"></StackLayout>
-               
+                             HeightRequest="500" WidthRequest="500" BorderColor="black" CornerRadius="5"></Frame>
+
+
             </Grid>
         </Frame>
 
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Orientation="Horizontal">
+            <Button HorizontalOptions="Center" VerticalOptions="Center" Text="Submit Guess" 
+                    BorderColor="Black" CornerRadius="10" x:Name="BtnGuess" Clicked="BtnGuess_Clicked" Margin="10, 5, 10, 30"/>
+        </StackLayout>
+        
     </StackLayout>
+
 
 </ContentPage>
