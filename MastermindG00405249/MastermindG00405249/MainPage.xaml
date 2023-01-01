@@ -4,62 +4,115 @@
              x:Class="MastermindG00405249.MainPage">
 
 
-    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-        <Label Margin="10, 30, 10, 5" x:Name="LblTitle" Text="MASTERMIND" TextDecorations="Underline" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"
+    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="WhiteSmoke">
+        <!-- Main SL -->
+        <StackLayout x:Name="SLGame" IsVisible="false"> 
+            <Label Margin="10, 30, 10, 5" x:Name="LblTitle" Text="MASTERMIND" TextDecorations="Underline" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"
                HorizontalTextAlignment="Center"/>
-        <Frame HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="910" WidthRequest="610" 
+            <Frame HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="910" WidthRequest="610" 
                BackgroundColor="#6b3520" CornerRadius="20" BorderColor="black" HasShadow="True">
 
-            <Grid HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="900" WidthRequest="600" BackgroundColor="#6b3520"
+                <Grid HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="900" WidthRequest="600" BackgroundColor="#6b3520"
               x:Name="MainGrid">
-                <Grid.RowDefinitions>
-                    <!-- 14 -->
-                    <RowDefinition Height="0.1*"/>
-                    <!--Border-->
-                    <RowDefinition Height="1.2*"/>
-                    <!--Hidden-->
-                    <RowDefinition Height="0.1*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="0.4*"/>
-                    <!--Border-->
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <!--Border-->
-                    <ColumnDefinition Width="0.1*"/>
-                    <!--Correct Guesses -->
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="0.01*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="0.2*"/>
-                    <!--Border-->
-                </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <!-- 14 -->
+                        <RowDefinition Height="0.1*"/>
+                        <!--Border-->
+                        <RowDefinition Height="1.2*"/>
+                        <!--Hidden-->
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="0.4*"/>
+                        <!--Border-->
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <!--Border-->
+                        <ColumnDefinition Width="0.1*"/>
+                        <!--Correct Guesses -->
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="0.01*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="0.2*"/>
+                        <!--Border-->
+                    </Grid.ColumnDefinitions>
 
-                <Frame x:Name="AnswerCover" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="4"
+                    <Frame x:Name="AnswerCover" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="4"
                              HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="#411C15"
                              HeightRequest="500" WidthRequest="500" BorderColor="black" CornerRadius="5"></Frame>
 
 
-            </Grid>
-        </Frame>
+                </Grid>
+            </Frame>
 
-        <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Orientation="Horizontal">
-            <Button HorizontalOptions="Center" VerticalOptions="Center" Text="Submit Guess" 
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Orientation="Horizontal">
+                <Button HorizontalOptions="Center" VerticalOptions="Center" Text="Submit Guess"  BackgroundColor="Black" TextColor="White" Opacity="0.75"
                     BorderColor="Black" CornerRadius="10" x:Name="BtnGuess" Clicked="BtnGuess_Clicked" Margin="10, 5, 10, 30"/>
+                <Button HorizontalOptions="Center" VerticalOptions="Center" Text="Save Game" x:Name="BtnSave" BackgroundColor="Black" TextColor="White" Opacity="0.75"
+                    BorderColor="Black" CornerRadius="10" Clicked="BtnSave_Clicked" Margin="10, 5, 10, 30"/>
+            </StackLayout>
+        </StackLayout>
+
+        <!-- Starting SL -->
+        <StackLayout x:Name="SLStart" IsVisible="true">
+            <Label Margin="10, 30, 10, 5" Text="MASTERMIND" TextDecorations="Underline" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"
+               HorizontalTextAlignment="Center"/>
+            <Frame HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="910" WidthRequest="610" 
+               BackgroundColor="LightSlateGray" CornerRadius="20" BorderColor="black" HasShadow="True">
+                <StackLayout>
+                    <Label Text="Welcome to Mastermind!" TextDecorations="Underline" FontSize="Title" FontAttributes="Bold"
+                           HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center"/>
+                    
+                    <Label Text="Guide:" TextDecorations="Underline" FontSize="Subtitle"
+                            HorizontalTextAlignment="Start"/>
+                    
+                    <Label Text="* You must guess a sequence of four colours within 10 turns." FontSize="Small" Margin="5"
+                           HorizontalTextAlignment="Start"/>
+
+                    <Label Text="* Select colours by clicking on the current set of pegs." FontSize="Small" Margin="5"
+                           HorizontalTextAlignment="Start"/>
+
+                    <Label Text="* You can cycle through six colours. Press Submit Guess to submit the current sequence." FontSize="Small" Margin="5"
+                           HorizontalTextAlignment="Start"/>
+
+                    <Label Text="* If you have the correct colour in the right position, you'll see a black peg in the results box." FontSize="Small" Margin="5"
+                           HorizontalTextAlignment="Start"/>
+
+                    <Label Text="* If you have the correct colour in the wrong position, you'll see a white peg in the results box." FontSize="Small" Margin="5"
+                           HorizontalTextAlignment="Start"/>
+
+                    <Label Text="* Use this feedback to refine your guesses and try to get the right sequence!" FontSize="Small" Margin="5"
+                           HorizontalTextAlignment="Start"/>
+
+                    <Label Text="* You can save a game at any time during guessing. Load it using the button below." FontSize="Small" Margin="5"
+                           HorizontalTextAlignment="Start"/>
+
+                    <Label Text="Good luck!" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" Margin="5" 
+                           HorizontalTextAlignment="Start"/>
+                </StackLayout>
+            </Frame>
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Orientation="Horizontal">
+                <Button HorizontalOptions="Center" VerticalOptions="Center" Text="Start Game"  BackgroundColor="Black" TextColor="White" Opacity="0.75"
+                    BorderColor="Black" CornerRadius="10" x:Name="BtnStart" Margin="10, 5, 10, 30" Clicked="BtnStart_Clicked"/>
+                <Button HorizontalOptions="Center" VerticalOptions="Center" Text="Load Save" x:Name="BtnLoad" BackgroundColor="Black" TextColor="White" Opacity="0.75"
+                    BorderColor="Black" CornerRadius="10" Margin="10, 5, 10, 30" Clicked="BtnLoad_Clicked"/>
+            </StackLayout>
+
         </StackLayout>
         
     </StackLayout>
+
 
 
 </ContentPage>

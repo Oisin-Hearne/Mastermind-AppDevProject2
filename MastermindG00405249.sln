@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MastermindG00405249.UWP", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MastermindG00405249.Android", "MastermindG00405249\MastermindG00405249.Android\MastermindG00405249.Android.csproj", "{286DDE29-CF01-4A4E-A547-0676D96BAAE9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MastermindG00405249", "MastermindG00405249\MastermindG00405249\MastermindG00405249.csproj", "{BC7BC9F4-71AA-4AAA-9AAB-1EBC410A6B7D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MastermindG00405249", "MastermindG00405249\MastermindG00405249\MastermindG00405249.csproj", "{BC7BC9F4-71AA-4AAA-9AAB-1EBC410A6B7D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
