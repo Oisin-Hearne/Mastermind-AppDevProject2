@@ -46,7 +46,7 @@ namespace MastermindG00405249
         {
             for (int i = 0; i < 4; i++)
             {
-                _pegs[i].Source = "1.png";
+                _pegs[i].Source = "one.png";
                 _playerGuess[i] = 1;
 
                 MainGrid.Children.Add(_pegs[i]);
@@ -66,7 +66,7 @@ namespace MastermindG00405249
             else
                 _playerGuess[y] = 1;
 
-            ((ImageButton)sender).Source = _playerGuess[y] + ".png";
+            ((ImageButton)sender).Source = NumberToWord(_playerGuess[y]) + ".png";
         }
 
         //Create a random sequence of colours in _generatedAns and then create 4 pegs for those answers, hidden from the user.
@@ -78,7 +78,7 @@ namespace MastermindG00405249
                 _answerPegs[i] = new Image();
                 _generatedAns[i] = _rng.Next(1, 7);
 
-                _answerPegs[i].Source = _generatedAns[i] + ".png";
+                _answerPegs[i].Source = NumberToWord(_generatedAns[i]) + ".png";
                 _answerPegs[i].HorizontalOptions = LayoutOptions.Center;
                 _answerPegs[i].VerticalOptions = LayoutOptions.Center;
                 _answerPegs[i].IsVisible = false;
@@ -132,6 +132,7 @@ namespace MastermindG00405249
             {
                 _pegs[i] = new ImageButton();
                 _pegs[i].Clicked += peg_Clicked;
+                _pegs[i].BackgroundColor = Color.Transparent;
                 _pegs[i].HorizontalOptions = LayoutOptions.Center;
                 _pegs[i].VerticalOptions = LayoutOptions.Center;
             }
@@ -141,7 +142,7 @@ namespace MastermindG00405249
         {
             for (int i = 0; i < 4; i++)
             {
-                _emptyPegs[9 - _currentGuess, i].Source = _playerGuess[i] + ".png";
+                _emptyPegs[9 - _currentGuess, i].Source = NumberToWord(_playerGuess[i]) + ".png";
                 _pastGuesses[_currentGuess, i] = _playerGuess[i]; //Save guess to past guesses
             }
 
@@ -368,7 +369,7 @@ namespace MastermindG00405249
                 for (int c = 0; c < 4; c++)
                 {
                     if(_pastGuesses[r,c] != 0)
-                      _emptyPegs[9-r, c].Source = _pastGuesses[r,c]+".png";
+                      _emptyPegs[9-r, c].Source = NumberToWord(_pastGuesses[r,c])+".png";
                 }
 
                 //Place result pegs
@@ -450,6 +451,41 @@ namespace MastermindG00405249
             SLStart.IsVisible = false;
             SLGame.IsVisible = true;
             StartGame();
+        }
+
+        //Realized that filenames in android cant have numbers, so I have to do this.
+        
+        private String NumberToWord(int num)
+        {
+            String s;
+            //Just 1-6
+            switch(num)
+            {
+                case 1:
+                    s = "one";
+                    break;
+                case 2:
+                    s = "two";
+                    break;
+                case 3:
+                    s = "three";
+                    break;
+                case 4:
+                    s = "four";
+                    break;
+                case 5:
+                    s = "five";
+                    break;
+                case 6:
+                    s = "six";
+                    break;
+                default:
+                    s = "zero";
+                    break;
+
+            }
+
+            return s;
         }
     }
 }

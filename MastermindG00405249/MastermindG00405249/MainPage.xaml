@@ -52,7 +52,7 @@
                              HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="#411C15"
                              HeightRequest="500" WidthRequest="500" BorderColor="black" CornerRadius="5"></Frame>
 
-                    <Label Text="Results:" Grid.Row="1" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="End" TextDecorations="Underline" FontSize="Medium"/>
+                    <Label Text="Results:" Grid.Row="1" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="End" TextDecorations="Underline" FontSize="Small"/>
 
                 </Grid>
             </Frame>

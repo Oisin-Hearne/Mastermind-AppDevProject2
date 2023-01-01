@@ -104,22 +104,22 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="6.png">
+    <Content Include="six.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="1.png">
+    <Content Include="one.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="2.png">
+    <Content Include="two.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="3.png">
+    <Content Include="three.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="4.png">
+    <Content Include="four.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="5.png">
+    <Content Include="five.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\LargeTile.scale-100.png" />
