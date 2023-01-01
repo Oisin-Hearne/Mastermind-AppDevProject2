@@ -52,6 +52,7 @@
                              HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="#411C15"
                              HeightRequest="500" WidthRequest="500" BorderColor="black" CornerRadius="5"></Frame>
 
+                    <Label Text="Results:" Grid.Row="1" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="End" TextDecorations="Underline" FontSize="Medium"/>
 
                 </Grid>
             </Frame>
@@ -70,7 +71,7 @@
                HorizontalTextAlignment="Center"/>
             <Frame HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="910" WidthRequest="610" 
                BackgroundColor="LightSlateGray" CornerRadius="20" BorderColor="black" HasShadow="True">
-                <StackLayout>
+                <StackLayout x:Name="SLGuide">
                     <Label Text="Welcome to Mastermind!" TextDecorations="Underline" FontSize="Title" FontAttributes="Bold"
                            HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center"/>
                     

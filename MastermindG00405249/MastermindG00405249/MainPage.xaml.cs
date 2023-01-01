@@ -16,6 +16,7 @@ namespace MastermindG00405249
     {
         //Variables
         ImageButton[] _pegs = new ImageButton[4];
+        Image[] _answerPegs = new Image[4];
         Image[,] _emptyPegs = new Image[10, 4]; //A 2D array of Images is used to store the empty pegs and make them invisible from other methods.
         Random _rng = new Random();
 
@@ -37,6 +38,7 @@ namespace MastermindG00405249
         {
             SetUpGrid();
             ComputerGuess();
+            _currentGuess = 0;
             MoveGuessZone();
         }
 
@@ -67,22 +69,24 @@ namespace MastermindG00405249
             ((ImageButton)sender).Source = _playerGuess[y] + ".png";
         }
 
+        //Create a random sequence of colours in _generatedAns and then create 4 pegs for those answers, hidden from the user.
         private void ComputerGuess()
         {
-            ImageButton b;
+            
             for (int i = 0; i < 4; i++)
             {
-                b = new ImageButton();
+                _answerPegs[i] = new Image();
                 _generatedAns[i] = _rng.Next(1, 7);
 
-                b.Source = _generatedAns[i] + ".png";
-                b.HorizontalOptions = LayoutOptions.Center;
-                b.VerticalOptions = LayoutOptions.Center;
-                b.IsVisible = true;
+                _answerPegs[i].Source = _generatedAns[i] + ".png";
+                _answerPegs[i].HorizontalOptions = LayoutOptions.Center;
+                _answerPegs[i].VerticalOptions = LayoutOptions.Center;
+                _answerPegs[i].IsVisible = false;
 
-                MainGrid.Children.Add(b);
-                b.SetValue(Grid.RowProperty, 1);
-                b.SetValue(Grid.ColumnProperty, 3 + i);
+                MainGrid.Children.Add(_answerPegs[i]);
+                _answerPegs[i].SetValue(Grid.RowProperty, 1);
+                _answerPegs[i].SetValue(Grid.ColumnProperty, 3 + i);
+
             }
         }
 
@@ -144,7 +148,10 @@ namespace MastermindG00405249
             MakeGuess();
 
             _currentGuess++;
-            MoveGuessZone();
+            if (_currentGuess < 10)
+                MoveGuessZone();
+            else
+                WinLoseGame('L');
         }
 
         private void MakeGuess()
@@ -198,7 +205,8 @@ namespace MastermindG00405249
 
             placeResults(partiallyCorrect, fullyCorrect, _currentGuess);
 
-            LblTitle.Text = "Partial: " + partiallyCorrect + " Full: " + fullyCorrect + " All: " + countCorrect;
+            if (fullyCorrect == 4)
+                WinLoseGame('W');
 
         }
 
@@ -375,6 +383,52 @@ namespace MastermindG00405249
                 }
                 placeResults(partial, full, r);
 
+            }
+        }
+
+        private async void WinLoseGame(char result)
+        {
+            bool reset;
+
+            //Disable pegs & buttons
+            for(int i = 0; i < 4; i++)
+            {
+                _pegs[i].IsVisible = false;
+            }
+            BtnSave.IsEnabled = false;
+            BtnGuess.IsEnabled = false;
+
+            //Show Answer
+            for (int i = 0; i < 4; i++)
+                _answerPegs[i].IsVisible = true;
+
+            //Prompt user on resetting the game or exiting it.
+            if(result == 'W')
+            {
+                reset = await DisplayAlert("You've won!", "You guessed the correct sequence in " + (_currentGuess + 1) + " turns! Would you like to reset?", "Yes", "No");
+
+            }
+            else
+            {
+                reset = await DisplayAlert("You Lost...", "You failed to guess the correct sequence within 10 turns. Would you like to reset?", "Yes", "No");
+            }
+
+            //Reset or Stay
+            if (reset)
+            {
+                //Get rid of current pegs
+                for (int i = 0; i < 4; i++)
+                    _answerPegs[i].IsVisible = false;
+
+                //Restart
+                StartGame();
+                BtnSave.IsEnabled = true;
+                BtnGuess.IsEnabled = true;
+            }
+            else
+            {
+                //I was going to have the app exit here, but from googling it, it seems to be bad practice to force close an app?
+                //I'll just let the user look at the completed board.
             }
         }
 
